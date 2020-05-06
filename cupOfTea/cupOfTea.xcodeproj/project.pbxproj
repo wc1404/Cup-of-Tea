@@ -56,6 +56,7 @@
 		3C88C2062460FEB7008452ED /* cupOfTeaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cupOfTeaUITests.m; sourceTree = "<group>"; };
 		3C88C2082460FEB7008452ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C88C2142461021B008452ED /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		E989E5C42462461A00F285D6 /* cup_of_tea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cup_of_tea.png; path = "/Users/WilfredoCueto/Desktop/2. CSCI-UA 480 014 - iOS Programming/Final Project/Cup-of-Tea/cupOfTea/cupOfTea/cup_of_tea.png"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +119,7 @@
 				3C88C1ED2460FEB6008452ED /* LaunchScreen.storyboard */,
 				3C88C1F02460FEB6008452ED /* Info.plist */,
 				3C88C1F12460FEB6008452ED /* main.m */,
+				E989E5C42462461A00F285D6 /* cup_of_tea.png */,
 			);
 			path = cupOfTea;
 			sourceTree = "<group>";
@@ -451,7 +453,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ios-finalProj.cupOfTea";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -467,7 +469,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ios-finalProj.cupOfTea";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

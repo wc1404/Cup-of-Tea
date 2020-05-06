@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:cupOfTea.xcodeproj">
+      location = "group:../cupOfTea/Restaurant.h">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/WilfredoCueto/Desktop/2. CSCI-UA 480 014 - iOS Programming/Final Project/Cup-of-Tea/cupOfTea/cupOfTea/cup_of_tea.png">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
