@@ -17,6 +17,42 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _tags = [[NSMutableArray alloc] init];
+}
+
+// when user presses +, add user input tags into array
+- (IBAction)addTag:(id)sender {
+    // alert if invalid input
+    if ([_textBarAdd.text  isEqual: @""]){
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert"
+        message:@"Please enter a valid tag."
+        preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+           handler:^(UIAlertAction * action) {}];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else{
+        // add input to array and clear text field
+        [_tags addObject:_textBarAdd.text];
+        _textBarAdd.text = @"";
+        //for (NSString *i in _tags)
+        //{NSLog(@"%@", i);}
+    }
+}
+
+- (NSInteger)prefView:(UICollectionView *)prefView numberOfItemsInSection:(NSInteger)section {
+    return _tags.count;
+}
+- (UICollectionViewCell *)prefView:(UICollectionView *)prefView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identifier = @"Cell";
+    
+    UICollectionViewCell *cell = [prefView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    /*
+    
+     */
+    
+    return cell;
 }
 
 /*
