@@ -32,6 +32,7 @@
 		3CEF9E3B246E383E007A29D4 /* RobotoMono-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CEF9E31246E383E007A29D4 /* RobotoMono-LightItalic.ttf */; };
 		E94D67EB2468A63B00B2A211 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D67EA2468A63B00B2A211 /* SearchViewController.m */; };
 		E94D67F82468A9C000B2A211 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D67F72468A9C000B2A211 /* TagCell.m */; };
+		E9540289246F36250082CE2F /* PreviousRestaurants.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9540287246F36250082CE2F /* PreviousRestaurants.xcdatamodeld */; };
 		E9B497C02468F06E00BF09CD /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497BF2468F06E00BF09CD /* SearchResultViewController.m */; };
 		E9B497C52468F27200BF09CD /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497C42468F27200BF09CD /* Restaurant.m */; };
 		E9B497C8246920C000BF09CD /* PreviouslyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497C7246920C000BF09CD /* PreviouslyVisitedViewController.m */; };
@@ -93,6 +94,7 @@
 		E94D67EA2468A63B00B2A211 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		E94D67F62468A9C000B2A211 /* TagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
 		E94D67F72468A9C000B2A211 /* TagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
+		E9540288246F36250082CE2F /* PreviousRestaurants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreviousRestaurants.xcdatamodel; sourceTree = "<group>"; };
 		E989E5C42462461A00F285D6 /* cup_of_tea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cup_of_tea.png; path = "/Users/WilfredoCueto/Desktop/2. CSCI-UA 480 014 - iOS Programming/Final Project/Cup-of-Tea/cupOfTea/cupOfTea/cup_of_tea.png"; sourceTree = "<absolute>"; };
 		E9B497BE2468F06E00BF09CD /* SearchResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		E9B497BF2468F06E00BF09CD /* SearchResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				3C88C1ED2460FEB6008452ED /* LaunchScreen.storyboard */,
 				3C88C1F02460FEB6008452ED /* Info.plist */,
 				3C88C1F12460FEB6008452ED /* main.m */,
+				E9540287246F36250082CE2F /* PreviousRestaurants.xcdatamodeld */,
 				E9B497C22468F24A00BF09CD /* Custom Classes */,
 				E94D67EC2468A68200B2A211 /* ViewControllers */,
 				E94D67F52468A8D700B2A211 /* Cells */,
@@ -402,6 +405,7 @@
 			files = (
 				E9B497C52468F27200BF09CD /* Restaurant.m in Sources */,
 				E94D67F82468A9C000B2A211 /* TagCell.m in Sources */,
+				E9540289246F36250082CE2F /* PreviousRestaurants.xcdatamodeld in Sources */,
 				3C88C1E72460FEB4008452ED /* ViewController.m in Sources */,
 				E9B497CB246920E700BF09CD /* VisitedRestaurantCell.m in Sources */,
 				3C88C1E12460FEB4008452ED /* AppDelegate.m in Sources */,
@@ -719,6 +723,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E9540287246F36250082CE2F /* PreviousRestaurants.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E9540288246F36250082CE2F /* PreviousRestaurants.xcdatamodel */,
+			);
+			currentVersion = E9540288246F36250082CE2F /* PreviousRestaurants.xcdatamodel */;
+			path = PreviousRestaurants.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3C88C1D42460FEB4008452ED /* Project object */;
 }

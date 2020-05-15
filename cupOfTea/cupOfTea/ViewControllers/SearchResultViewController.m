@@ -22,20 +22,30 @@
     
     _restaurants = [[NSMutableArray alloc] init];
     
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Papa John's" andAddress:@"99-06 Northern Blvd Ste 1, Queens, NY 11368" andPhoneNum:@"(718) 507-7991" andRestImage:@"" andDescription:@"" andStarRating:4 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Uncle Thomas Pizza" andAddress:@"9023 37th Ave, Jackson Heights, NY 11372" andPhoneNum:@"(718) 898-0347" andRestImage:@"" andDescription:@"" andStarRating:4 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Louie's" andAddress:@"8134 Baxter Ave # 1, Elmhurst, NY 11373" andPhoneNum:@"(718) 440-9346" andRestImage:@"" andDescription:@"" andStarRating:5 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Domino's Pizza" andAddress:@"9045 Corona Ave., Queens, NY 11373" andPhoneNum:@"(718) 457-3030" andRestImage:@"" andDescription:@"" andStarRating:3 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Papa John's" andAddress:@"99-06 Northern Blvd Ste 1, Queens, NY 11368" andPhoneNum:@"(718) 507-7991" andRestImage:@"" andStarRating:4.1 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Uncle Thomas Pizza" andAddress:@"9023 37th Ave, Jackson Heights, NY 11372" andPhoneNum:@"(718) 898-0347" andRestImage:@"" andStarRating:4.6 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Louie's" andAddress:@"8134 Baxter Ave # 1, Elmhurst, NY 11373" andPhoneNum:@"(718) 440-9346" andRestImage:@""  andStarRating:5.0 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Domino's Pizza" andAddress:@"9045 Corona Ave., Queens, NY 11373" andPhoneNum:@"(718) 457-3030" andRestImage:@""  andStarRating:3.2 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
     
     [_searchResultTable reloadData];
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+   return 2;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *separationView = [UIView new];
+    [separationView setBackgroundColor:[UIColor clearColor]];
+    return separationView;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return _restaurants.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _restaurants.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -44,7 +54,7 @@
     
     SearchResultCell *cell = [_searchResultTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    Restaurant *currentRestaurant = [_restaurants objectAtIndex:indexPath.row];
+    Restaurant *currentRestaurant = [_restaurants objectAtIndex:indexPath.section];
     
     cell.name.text = currentRestaurant.name;
     cell.address.text = currentRestaurant.address;
@@ -60,7 +70,7 @@
     }
     
     cell.pricing.text = pricingMoneySigns;
-    cell.rating.text = [[NSString alloc] initWithFormat:@"%d", currentRestaurant.starRating];
+    cell.rating.text = [[NSString alloc] initWithFormat:@"%.1f", currentRestaurant.starRating];
     
     return cell;
 }
@@ -69,25 +79,15 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)searchAgain:(id)sender {
     [self resetVote];
     [_restaurants removeAllObjects];
     //[self searchForRestaurants];
     
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"La Pequena Taste of Italy Pizza" andAddress:@"37-72 90th St, Jackson Heights, NY 11372" andPhoneNum:@"(718) 505-2600" andRestImage:@"" andDescription:@"" andStarRating:4 andPricing:2 andCuisines:[[NSMutableArray alloc] init]]];
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Pizza Sam" andAddress:@"89-06 Northern Blvd, Jackson Heights, NY 11372" andPhoneNum:@"(718) 335-3800" andRestImage:@"" andDescription:@"" andStarRating:4 andPricing:2 andCuisines:[[NSMutableArray alloc] init]]];
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Little Caesars Pizza" andAddress:@"86-10 Roosevelt Ave #27, Jackson Heights, NY 11372" andPhoneNum:@"(718) 205-2350" andRestImage:@"" andDescription:@"" andStarRating:4 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
-    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Susano’s" andAddress:@"95-12 35th Ave, Flushing, NY 11372" andPhoneNum:@"(929) 349-1280" andRestImage:@"" andDescription:@"" andStarRating:5 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"La Pequena Taste of Italy Pizza" andAddress:@"37-72 90th St, Jackson Heights, NY 11372" andPhoneNum:@"(718) 505-2600" andRestImage:@"" andStarRating:4.3 andPricing:2 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Pizza Sam" andAddress:@"89-06 Northern Blvd, Jackson Heights, NY 11372" andPhoneNum:@"(718) 335-3800" andRestImage:@"" andStarRating:4.1 andPricing:2 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Little Caesars Pizza" andAddress:@"86-10 Roosevelt Ave #27, Jackson Heights, NY 11372" andPhoneNum:@"(718) 205-2350" andRestImage:@"" andStarRating:4.0 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
+    [_restaurants addObject:[[Restaurant alloc] initWithName:@"Susano’s" andAddress:@"95-12 35th Ave, Flushing, NY 11372" andPhoneNum:@"(929) 349-1280" andRestImage:@""  andStarRating:5.0 andPricing:1 andCuisines:[[NSMutableArray alloc] init]]];
     
     [_searchResultTable reloadData];
 }
@@ -97,26 +97,6 @@
 }
 
 - (void)searchForRestaurants {
-    NSDictionary *headers = @{ @"x-rapidapi-host": @"tripadvisor1.p.rapidapi.com",
-                               @"x-rapidapi-key": @"45241d658bmshea0a11227305bddp1f248cjsnc221b2fd389c" };
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://tripadvisor1.p.rapidapi.com/restaurants/list-in-boundary?min_rating=3&lunit=mi&combined_food=sushi&restaurant_tagcategory=10591&limit=4&currency=USD&prices_restaurants=4&restaurant_tagcategory_standalone=10591&lang=en_US&open_now=true&bl_latitude=11.847676&bl_longitude=109.095887&tr_latitude=12.838442&tr_longitude=109.149359"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
-    [request setHTTPMethod:@"GET"];
-    [request setAllHTTPHeaderFields:headers];
-
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
-                                                    }
-                                                }];
-    [dataTask resume];
 }
 
 - (IBAction)resetVotes:(id)sender {
@@ -148,5 +128,15 @@
     
     maxCell.selected = true;
 }
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

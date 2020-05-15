@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,16 +15,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *address;
 @property (weak, nonatomic) NSString *phoneNum;
-@property (weak, nonatomic) NSString *restDescription;
 @property (weak, nonatomic) NSString *restImage;
 @property (weak, nonatomic) NSMutableArray *cuisines;
 
-@property int starRating;
+@property float starRating;
 @property int pricing;
 
 -(instancetype)init;
 
--(instancetype)initWithName:(NSString*)name andAddress:(NSString*)address andPhoneNum:(NSString*)phoneNum andRestImage:(NSString*)imageURL andDescription:(NSString*)restDesription andStarRating:(int)rating andPricing:(int)pricing andCuisines:(NSMutableArray*)cuisines;
+-(instancetype)initWithName:(NSString*)name andAddress:(NSString*)address andPhoneNum:(NSString*)phoneNum andRestImage:(NSString*)imageURL andStarRating:(float)rating andPricing:(int)pricing andCuisines:(NSMutableArray*)cuisines;
+
+-(void)saveToCoreData;
+
++(NSArray*)fetchPreviousRestaurants;
 
 @end
 
