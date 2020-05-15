@@ -15,13 +15,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="cupOfTeaLogo" translatesAutoresizingMaskIntoConstraints="NO" id="32R-GG-mS8">
-                                <rect key="frame" x="68" y="299" width="278" height="299"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="cupOfTeaLogo" translatesAutoresizingMaskIntoConstraints="NO" id="32R-GG-mS8">
+                                <rect key="frame" x="68" y="299" width="278" height="298"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="32R-GG-mS8" secondAttribute="height" multiplier="139:149" id="d95-Pf-0ff"/>
+                                </constraints>
                                 <viewLayoutGuide key="safeArea" id="Fup-yl-iaJ"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="32R-GG-mS8" secondAttribute="trailing" constant="68" id="Tdm-BJ-QdA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="32R-GG-mS8" secondAttribute="bottom" constant="265" id="nh8-GO-Hv0"/>
+                            <constraint firstItem="32R-GG-mS8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="68" id="pzv-tQ-nu3"/>
+                            <constraint firstItem="32R-GG-mS8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sAY-xr-GvC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
