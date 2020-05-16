@@ -303,11 +303,12 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="address" destination="y8v-nR-fHN" id="cil-3j-znH"/>
-                                            <outlet property="image" destination="Ax1-Sz-OcQ" id="y9z-cJ-dIi"/>
+                                            <outlet property="imageBackground" destination="Ax1-Sz-OcQ" id="79g-Rf-pDL"/>
                                             <outlet property="name" destination="jDl-S4-W9K" id="VgD-ig-iNd"/>
                                             <outlet property="phoneNum" destination="mLM-cM-9of" id="uLj-pA-CBg"/>
                                             <outlet property="pricing" destination="OpC-N9-Erd" id="YK2-Uh-Jox"/>
                                             <outlet property="rating" destination="pmL-Bi-jg8" id="oYh-5h-css"/>
+                                            <outlet property="voteButtonOutlet" destination="cfh-Cb-xkr" id="xpT-mQ-rdP"/>
                                             <outlet property="voteCountLabel" destination="khB-JG-v0I" id="hD0-xL-w3E"/>
                                         </connections>
                                     </tableViewCell>
@@ -375,6 +376,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3BT-pl-vxb"/>
                     <connections>
+                        <outlet property="finishVotingButton" destination="C1R-nP-Nc5" id="uFV-W6-FlX"/>
                         <outlet property="searchResultTable" destination="ztm-xi-bua" id="ZmD-c8-Sjn"/>
                     </connections>
                 </viewController>
@@ -796,7 +798,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="address" destination="TEU-2D-XKm" id="7HM-W0-8bn"/>
-                                            <outlet property="image" destination="xBo-Do-3g2" id="xJr-Qe-MSL"/>
                                             <outlet property="name" destination="tgf-hh-pvD" id="QPN-ru-I8T"/>
                                             <outlet property="phoneNum" destination="8Sz-CO-M7M" id="icL-RV-sCI"/>
                                             <outlet property="pricing" destination="wze-3g-eEL" id="9hU-Yh-Dd2"/>

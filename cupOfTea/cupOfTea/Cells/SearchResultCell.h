@@ -15,19 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property int voteCount;
 
 @property (strong, nonatomic) IBOutlet UILabel *name;
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet UILabel *cuisines;
 @property (strong, nonatomic) IBOutlet UILabel *address;
 @property (strong, nonatomic) IBOutlet UILabel *pricing;
 @property (strong, nonatomic) IBOutlet UILabel *rating;
 @property (strong, nonatomic) IBOutlet UILabel *phoneNum;
+@property (strong, nonatomic) IBOutlet UIImageView *imageBackground;
 
 @property (strong, nonatomic) IBOutlet UILabel *voteCountLabel;
 
+@property (strong, nonatomic) IBOutlet UIButton *voteButtonOutlet;
 
 - (IBAction)voteButton:(id)sender;
-
-
 
 @end
 

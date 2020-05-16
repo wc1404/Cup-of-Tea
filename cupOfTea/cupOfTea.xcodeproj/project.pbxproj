@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,11 +33,19 @@
 		E94D67EB2468A63B00B2A211 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D67EA2468A63B00B2A211 /* SearchViewController.m */; };
 		E94D67F82468A9C000B2A211 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D67F72468A9C000B2A211 /* TagCell.m */; };
 		E9540289246F36250082CE2F /* PreviousRestaurants.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9540287246F36250082CE2F /* PreviousRestaurants.xcdatamodeld */; };
+		E99943FC246F95A8000E84CC /* cupOfTea_80.png in Resources */ = {isa = PBXBuildFile; fileRef = E99943F5246F95A6000E84CC /* cupOfTea_80.png */; };
+		E99943FD246F95A8000E84CC /* cupOfTea_60.png in Resources */ = {isa = PBXBuildFile; fileRef = E99943F6246F95A6000E84CC /* cupOfTea_60.png */; };
+		E99943FE246F95A8000E84CC /* cupOfTea_87.png in Resources */ = {isa = PBXBuildFile; fileRef = E99943F7246F95A7000E84CC /* cupOfTea_87.png */; };
+		E99943FF246F95A8000E84CC /* cupOfTea_58.png in Resources */ = {isa = PBXBuildFile; fileRef = E99943F8246F95A7000E84CC /* cupOfTea_58.png */; };
+		E9994400246F95A8000E84CC /* cupOfTea_40.png in Resources */ = {isa = PBXBuildFile; fileRef = E99943F9246F95A7000E84CC /* cupOfTea_40.png */; };
+		E9994401246F95A9000E84CC /* cupOfTea_180.png in Resources */ = {isa = PBXBuildFile; fileRef = E99943FA246F95A8000E84CC /* cupOfTea_180.png */; };
+		E9994402246F95A9000E84CC /* cupOfTea_120.png in Resources */ = {isa = PBXBuildFile; fileRef = E99943FB246F95A8000E84CC /* cupOfTea_120.png */; };
 		E9B497C02468F06E00BF09CD /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497BF2468F06E00BF09CD /* SearchResultViewController.m */; };
 		E9B497C52468F27200BF09CD /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497C42468F27200BF09CD /* Restaurant.m */; };
 		E9B497C8246920C000BF09CD /* PreviouslyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497C7246920C000BF09CD /* PreviouslyVisitedViewController.m */; };
 		E9B497CB246920E700BF09CD /* VisitedRestaurantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497CA246920E700BF09CD /* VisitedRestaurantCell.m */; };
 		E9F97C98246943B300547A3B /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F97C97246943B300547A3B /* SearchResultCell.m */; };
+		EF9959619A9172CF59F1F02C /* Pods_cupOfTea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACBEF71ADB0133D21A8A73D /* Pods_cupOfTea.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,12 +98,26 @@
 		3CEF9E2F246E383E007A29D4 /* RobotoMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Thin.ttf"; sourceTree = "<group>"; };
 		3CEF9E30246E383E007A29D4 /* RobotoMono-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Italic.ttf"; sourceTree = "<group>"; };
 		3CEF9E31246E383E007A29D4 /* RobotoMono-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-LightItalic.ttf"; sourceTree = "<group>"; };
+		67815EFAFC7B9F8AD59A1AAD /* Pods-cupOfTea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cupOfTea.debug.xcconfig"; path = "Target Support Files/Pods-cupOfTea/Pods-cupOfTea.debug.xcconfig"; sourceTree = "<group>"; };
+		8490544C551EE2185E01BC91 /* Pods-cupOfTea.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cupOfTea.release.xcconfig"; path = "Target Support Files/Pods-cupOfTea/Pods-cupOfTea.release.xcconfig"; sourceTree = "<group>"; };
+		BACBEF71ADB0133D21A8A73D /* Pods_cupOfTea.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cupOfTea.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E94D67E92468A63B00B2A211 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		E94D67EA2468A63B00B2A211 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		E94D67F62468A9C000B2A211 /* TagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
 		E94D67F72468A9C000B2A211 /* TagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
 		E9540288246F36250082CE2F /* PreviousRestaurants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreviousRestaurants.xcdatamodel; sourceTree = "<group>"; };
 		E989E5C42462461A00F285D6 /* cup_of_tea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cup_of_tea.png; path = "/Users/WilfredoCueto/Desktop/2. CSCI-UA 480 014 - iOS Programming/Final Project/Cup-of-Tea/cupOfTea/cupOfTea/cup_of_tea.png"; sourceTree = "<absolute>"; };
+		E99943EF246F74D9000E84CC /* Restaurants+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Restaurants+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
+		E99943F0246F74DA000E84CC /* Restaurants+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Restaurants+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
+		E99943F1246F74DA000E84CC /* Restaurants+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Restaurants+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
+		E99943F2246F74DA000E84CC /* Restaurants+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Restaurants+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		E99943F5246F95A6000E84CC /* cupOfTea_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_80.png; sourceTree = "<group>"; };
+		E99943F6246F95A6000E84CC /* cupOfTea_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_60.png; sourceTree = "<group>"; };
+		E99943F7246F95A7000E84CC /* cupOfTea_87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_87.png; sourceTree = "<group>"; };
+		E99943F8246F95A7000E84CC /* cupOfTea_58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_58.png; sourceTree = "<group>"; };
+		E99943F9246F95A7000E84CC /* cupOfTea_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_40.png; sourceTree = "<group>"; };
+		E99943FA246F95A8000E84CC /* cupOfTea_180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_180.png; sourceTree = "<group>"; };
+		E99943FB246F95A8000E84CC /* cupOfTea_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_120.png; sourceTree = "<group>"; };
 		E9B497BE2468F06E00BF09CD /* SearchResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
 		E9B497BF2468F06E00BF09CD /* SearchResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultViewController.m; sourceTree = "<group>"; };
 		E9B497C32468F27200BF09CD /* Restaurant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
@@ -113,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF9959619A9172CF59F1F02C /* Pods_cupOfTea.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +164,8 @@
 				3C88C1FA2460FEB7008452ED /* cupOfTeaTests */,
 				3C88C2052460FEB7008452ED /* cupOfTeaUITests */,
 				3C88C1DD2460FEB4008452ED /* Products */,
+				B36A99E6203C0AFEB2953186 /* Pods */,
+				F8D89BC246A817ACF558C09B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +241,15 @@
 			path = fonts2;
 			sourceTree = "<group>";
 		};
+		B36A99E6203C0AFEB2953186 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67815EFAFC7B9F8AD59A1AAD /* Pods-cupOfTea.debug.xcconfig */,
+				8490544C551EE2185E01BC91 /* Pods-cupOfTea.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E94D67EC2468A68200B2A211 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +266,13 @@
 		E94D67ED2468A6A600B2A211 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E99943F9246F95A7000E84CC /* cupOfTea_40.png */,
+				E99943F8246F95A7000E84CC /* cupOfTea_58.png */,
+				E99943F6246F95A6000E84CC /* cupOfTea_60.png */,
+				E99943F5246F95A6000E84CC /* cupOfTea_80.png */,
+				E99943F7246F95A7000E84CC /* cupOfTea_87.png */,
+				E99943FB246F95A8000E84CC /* cupOfTea_120.png */,
+				E99943FA246F95A8000E84CC /* cupOfTea_180.png */,
 				E989E5C42462461A00F285D6 /* cup_of_tea.png */,
 			);
 			path = Images;
@@ -253,10 +294,22 @@
 		E9B497C22468F24A00BF09CD /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E99943EF246F74D9000E84CC /* Restaurants+CoreDataProperties.h */,
+				E99943F0246F74DA000E84CC /* Restaurants+CoreDataClass.h */,
+				E99943F1246F74DA000E84CC /* Restaurants+CoreDataClass.m */,
+				E99943F2246F74DA000E84CC /* Restaurants+CoreDataProperties.m */,
 				E9B497C32468F27200BF09CD /* Restaurant.h */,
 				E9B497C42468F27200BF09CD /* Restaurant.m */,
 			);
 			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		F8D89BC246A817ACF558C09B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BACBEF71ADB0133D21A8A73D /* Pods_cupOfTea.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +319,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C88C20B2460FEB7008452ED /* Build configuration list for PBXNativeTarget "cupOfTea" */;
 			buildPhases = (
+				9E484FD09743256629FB9DCC /* [CP] Check Pods Manifest.lock */,
 				3C88C1D82460FEB4008452ED /* Sources */,
 				3C88C1D92460FEB4008452ED /* Frameworks */,
 				3C88C1DA2460FEB4008452ED /* Resources */,
+				E20A3D91AAD2FE2D05409766 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -362,23 +417,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99943FC246F95A8000E84CC /* cupOfTea_80.png in Resources */,
 				3CEF9E32246E383E007A29D4 /* RobotoMono-BoldItalic.ttf in Resources */,
 				3CEF9E33246E383E007A29D4 /* RobotoMono-Medium.ttf in Resources */,
+				E99943FF246F95A8000E84CC /* cupOfTea_58.png in Resources */,
+				E9994400246F95A8000E84CC /* cupOfTea_40.png in Resources */,
 				3CEF9E34246E383E007A29D4 /* RobotoMono-Bold.ttf in Resources */,
 				3CEF9E35246E383E007A29D4 /* RobotoMono-Regular.ttf in Resources */,
 				3CEF9E36246E383E007A29D4 /* RobotoMono-MediumItalic.ttf in Resources */,
 				3CEF9E37246E383E007A29D4 /* RobotoMono-ThinItalic.ttf in Resources */,
 				3CEF9E38246E383E007A29D4 /* RobotoMono-Light.ttf in Resources */,
+				E99943FD246F95A8000E84CC /* cupOfTea_60.png in Resources */,
 				3CEF9E39246E383E007A29D4 /* RobotoMono-Thin.ttf in Resources */,
 				3CEF9E3A246E383E007A29D4 /* RobotoMono-Italic.ttf in Resources */,
+				E99943FE246F95A8000E84CC /* cupOfTea_87.png in Resources */,
 				3CEF9E3B246E383E007A29D4 /* RobotoMono-LightItalic.ttf in Resources */,
 				3CEF9E23246E37F4007A29D4 /* Karla-Bold.ttf in Resources */,
 				3CEF9E24246E37F4007A29D4 /* Karla-Italic.ttf in Resources */,
 				3CEF9E25246E37F4007A29D4 /* Karla-BoldItalic.ttf in Resources */,
 				3CEF9E26246E37F4007A29D4 /* Karla-Regular.ttf in Resources */,
 				3C88C1EF2460FEB6008452ED /* LaunchScreen.storyboard in Resources */,
+				E9994402246F95A9000E84CC /* cupOfTea_120.png in Resources */,
 				3C88C1EC2460FEB6008452ED /* Assets.xcassets in Resources */,
 				3C88C1EA2460FEB4008452ED /* Main.storyboard in Resources */,
+				E9994401246F95A9000E84CC /* cupOfTea_180.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +459,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9E484FD09743256629FB9DCC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cupOfTea-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E20A3D91AAD2FE2D05409766 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cupOfTea/Pods-cupOfTea-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cupOfTea/Pods-cupOfTea-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cupOfTea/Pods-cupOfTea-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3C88C1D82460FEB4008452ED /* Sources */ = {
@@ -581,6 +685,7 @@
 		};
 		3C88C20C2460FEB7008452ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67815EFAFC7B9F8AD59A1AAD /* Pods-cupOfTea.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -597,6 +702,7 @@
 		};
 		3C88C20D2460FEB7008452ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8490544C551EE2185E01BC91 /* Pods-cupOfTea.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

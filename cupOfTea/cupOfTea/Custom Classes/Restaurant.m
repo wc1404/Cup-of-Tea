@@ -11,18 +11,16 @@
 @implementation Restaurant
 
 -(instancetype)init {
-    return [self initWithName:@"" andAddress:@"" andPhoneNum:@"" andRestImage:@"" andStarRating:0 andPricing:0 andCuisines:[[NSMutableArray alloc] init]];
+    return [self initWithName:@"" andAddress:@"" andPhoneNum:@"" andStarRating:0 andPricing:0];
 }
 
--(instancetype)initWithName:(NSString*)name andAddress:(NSString*)address andPhoneNum:(NSString*)phoneNum andRestImage:(NSString*)imageURL andStarRating:(float)rating andPricing:(int)pricing andCuisines:(NSMutableArray*)cuisines {
+-(instancetype)initWithName:(NSString*)name andAddress:(NSString*)address andPhoneNum:(NSString*)phoneNum andStarRating:(float)rating andPricing:(int)pricing {
     
     _name = name;
     _address = address;
     _phoneNum = phoneNum;
-    _restImage = imageURL;
     _starRating = rating;
     _pricing = pricing;
-    _cuisines = cuisines;
     
     return self;
 }

@@ -8,16 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "Restaurant.h"
+#import "Restaurants+CoreDataClass.h"
 #import "SearchResultCell.h"
+@import GooglePlaces;
+@import CoreLocation;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SearchResultViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface SearchResultViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+}
+
+@property (strong, nonatomic) float *currentLatitude;
+@property (strong, nonatomic) float *currentLongitude;
+
 
 @property (strong, nonatomic) NSMutableArray *tags;
 @property (strong, nonatomic) NSMutableArray *restaurants;
 
 @property (strong, nonatomic) IBOutlet UITableView *searchResultTable;
+
+@property (strong, nonatomic) IBOutlet UIButton *finishVotingButton;
 
 - (IBAction)finishVoting:(id)sender;
 
@@ -25,11 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)resetVote;
 
-- (void)searchForRestaurants;
-
 - (IBAction)restartSearch:(id)sender;
 
-- (IBAction)searchAgain:(id)sender;
+- (IBAction)search:(id)sender;
 
 @end
 

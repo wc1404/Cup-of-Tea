@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)init;
 
--(instancetype)initWithName:(NSString*)name andAddress:(NSString*)address andPhoneNum:(NSString*)phoneNum andRestImage:(NSString*)imageURL andStarRating:(float)rating andPricing:(int)pricing andCuisines:(NSMutableArray*)cuisines;
+-(instancetype)initWithName:(NSString*)name andAddress:(NSString*)address andPhoneNum:(NSString*)phoneNum andStarRating:(float)rating andPricing:(int)pricing;
 
 -(void)saveToCoreData;
 
