@@ -118,8 +118,21 @@
     NSString *latitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.latitude];
     NSString *longitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.longitude];
     
-    for(NSString *tag in _tags) {
-        NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&keyword=%@&opennow=true&key=%@", latitude,longitude,radius,tag,key];
+    if(_tags.count > 0) {
+        for(NSString *tag in _tags) {
+            NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&keyword=%@&opennow=true&key=%@", latitude,longitude,radius,tag,key];
+
+            NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
+
+            NSError* error;
+            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:restaurantData options:kNilOptions error:&error];
+            NSArray* places = [json objectForKey:@"results"];
+            for(NSDictionary *restaurant in places) {
+                [queryResults addObject:[restaurant objectForKey:@"place_id"]];
+            }
+        }
+    } else {
+        NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&opennow=true&key=%@", latitude,longitude,radius,key];
 
         NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
 
@@ -133,7 +146,13 @@
     
     if ([queryResults count] != 0) {
         int rest_count = 0;
-        while (rest_count < 4) {
+        int max_count = 4;
+        
+        if(queryResults.count < max_count){
+            max_count = (int)queryResults.count;
+        }
+        
+        while (rest_count < max_count) {
             NSUInteger randomIndex = arc4random() % queryResults.count;
             
             NSString *placeId = [queryResults objectAtIndex:randomIndex];
@@ -199,14 +218,13 @@
     
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurants"];
-     
-    NSError *error = nil;
+    Restaurants *newRestaurant = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurants" inManagedObjectContext:context];
     
-    NSArray *previousRestaurants = [context executeFetchRequest:request error:&error];
-    if (!previousRestaurants) {
-        NSLog(@"Error fetching Restaurant objects: %@\n%@", [error localizedDescription], [error userInfo]);
-        abort();
+    [newRestaurant setValue:maxRestaurant forKey:@"restaurantPlaceID"];
+    
+    NSError *error = nil;
+    if ([context save:&error] == NO) {
+        NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
     }
     
     maxCell.selected = true;

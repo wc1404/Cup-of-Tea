@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong,nonatomic) NSArray *restaurants;
 
+-(void)loadData;
+
+- (IBAction)reloadData:(id)sender;
+
 @end
 
 NS_ASSUME_NONNULL_END

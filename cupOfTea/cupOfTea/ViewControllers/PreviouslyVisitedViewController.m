@@ -22,28 +22,7 @@
     _visitedTable.delegate = self;
     _visitedTable.dataSource = self;
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    
-    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurants"];
-     
-    NSError *error = nil;
-    
-    NSArray *results = [context executeFetchRequest:request error:&error];
-    if (!results) {
-        NSLog(@"Error fetching Restaurant objects: %@\n%@", [error localizedDescription], [error userInfo]);
-        abort();
-    }
-    
-    _restaurants = results;
-    
-    //Load Restaurants from data to _restaurants array
-     
-//    NSError *error;
-//    BOOL success = [controller performFetch:&error];
-    
-    [_visitedTable reloadData];
+    [self loadData];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -111,6 +90,33 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath; {
     
+}
+
+- (IBAction)reloadData:(id)sender {
+    [self loadData];
+}
+
+-(void)loadData {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+    
+    NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurants"];
+     
+    NSError *error = nil;
+    
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    if (!results) {
+        NSLog(@"Error fetching Restaurant objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+    
+    _restaurants = results;
+    
+    NSLog(@"Restaurants: %@",_restaurants);
+    NSLog(@"Results: %@",results);
+    
+    [_visitedTable reloadData];
 }
 
 @end

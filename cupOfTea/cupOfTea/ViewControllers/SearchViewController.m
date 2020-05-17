@@ -17,7 +17,6 @@
     _tagCollection.delegate = self;
     
     _tags = [[NSMutableArray alloc] init];
-    [_tags addObject:@"Pizza"];
     
     [_tagCollection reloadData];
 }
@@ -66,6 +65,10 @@
         
         [_tagCollection reloadData];
     }
+}
+- (IBAction)randomSearch:(id)sender {
+    [_tags removeAllObjects];
+    [_tagCollection reloadData];
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
