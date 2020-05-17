@@ -2,7 +2,7 @@
 //  Restaurants+CoreDataClass.m
 //  cupOfTea
 //
-//  Created by Wilfredo Cueto on 5/15/20.
+//  Created by Wilfredo Cueto on 5/17/20.
 //  Copyright © 2020 Nivvy Balakumar, Wilfredo Cueto. All rights reserved.
 //
 //

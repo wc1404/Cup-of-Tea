@@ -20,14 +20,28 @@
     _searchResultTable.delegate = self;
     _searchResultTable.dataSource = self;
     
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _placesClient = [GMSPlacesClient sharedClient];
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager setDelegate:self];
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     
     _restaurants = [[NSMutableArray alloc] init];
     
-    [_searchResultTable reloadData];
+    [self search];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+}
+
+-(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if(status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        [_locationManager requestWhenInUseAuthorization];
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -54,48 +68,97 @@
     
     SearchResultCell *cell = [_searchResultTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    Restaurant *currentRestaurant = [_restaurants objectAtIndex:indexPath.section];
+    NSString *currentRestaurant = [_restaurants objectAtIndex:indexPath.section];
     
-    cell.name.text = currentRestaurant.name;
-    cell.address.text = currentRestaurant.address;
-    cell.phoneNum.text = currentRestaurant.phoneNum;
+    NSString *key = @"AIzaSyDrv9DRb5Ocxovw0koOOgrRsBYB_9hnAIc";
+    
+    NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/details/json?place_id=%@&fields=name,formatted_address,formatted_phone_number,rating,price_level&key=%@", currentRestaurant,key];
+
+    NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
+
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:restaurantData options:kNilOptions error:&error];
+    
+    NSString *priceLevel = [[json objectForKey:@"result"] objectForKey:@"price_level"];
+    
+    NSString *ratings = [[json objectForKey:@"result"] objectForKey:@"rating"];
+    
+    NSString *name = [[json objectForKey:@"result"] objectForKey:@"name"];
+    NSString *address = [[json objectForKey:@"result"] objectForKey:@"formatted_address"];
+    NSString *phone = [[json objectForKey:@"result"] objectForKey:@"formatted_phone_number"];
+    float rating = [ratings floatValue];
+    int pricing = (int)[priceLevel integerValue];
+    
+    cell.name.text = name;
+    cell.address.text = address;
+    cell.phoneNum.text = phone;
     
     NSMutableString *pricingMoneySigns = [[NSMutableString alloc] init];
     
-    for (int i = 0; i<currentRestaurant.pricing; i++) {
+    for (int i = 0; i < pricing; i++) {
         [pricingMoneySigns appendString:@"$"];
     }
     
     cell.pricing.text = pricingMoneySigns;
-    cell.rating.text = [[NSString alloc] initWithFormat:@"%.1f", currentRestaurant.starRating];
+    cell.rating.text = [[NSString alloc] initWithFormat:@"%.1f", rating];
     
     return cell;
 }
 
-- (IBAction)search:(id)sender {
+-(void)search {
     [self resetVote];
     [_restaurants removeAllObjects];
-    //[self searchForRestaurants];
     
-    [GMSPlacesClient currentPlaceWithCallback:^(GMSPlaceLikelihoodList *placeLikelihoodList, NSError *error){
-      if (error != nil) {
-        NSLog(@"Current Place error %@", [error localizedDescription]);
-        return;
-      }
+    [_locationManager requestLocation];
+    
+    NSMutableArray *queryResults = [[NSMutableArray alloc] init];
+    
+    NSString *key = @"AIzaSyDrv9DRb5Ocxovw0koOOgrRsBYB_9hnAIc";
+    NSString *radius = @"1700";// In Meters
+    NSString *latitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.latitude];
+    NSString *longitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.longitude];
+    
+    for(NSString *tag in _tags) {
+        NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&keyword=%@&opennow=true&key=%@", latitude,longitude,radius,tag,key];
 
-      if (placeLikelihoodList != nil) {
-        for(int i = 0; i<4; i++) {
-            GMSPlace *place = [[[placeLikelihoodList likelihoods] firstObject] place];
-            if (place != nil) {
-                [_restaurants addObject:[[Restaurant alloc] initWithName:place.name andAddress:[[place.formattedAddress componentsSeparatedByString:@", "] componentsJoinedByString:@"\n"] andPhoneNum:place.phoneNumber andStarRating:place.rating andPricing:place.priceLevel]];
+        NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
+
+        NSError* error;
+        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:restaurantData options:kNilOptions error:&error];
+        NSArray* places = [json objectForKey:@"results"];
+        for(NSDictionary *restaurant in places) {
+            [queryResults addObject:[restaurant objectForKey:@"place_id"]];
+        }
+    }
+    
+    if ([queryResults count] != 0) {
+        int rest_count = 0;
+        while (rest_count < 4) {
+            NSUInteger randomIndex = arc4random() % queryResults.count;
+            
+            NSString *placeId = [queryResults objectAtIndex:randomIndex];
+            
+            if(![_restaurants containsObject:placeId]) {
+                [_restaurants addObject:placeId];
+                rest_count++;
             }
         }
-      }
-    }];
-    
-    
+        
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"No Restaurants found Please Restart Search" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
     
     [_searchResultTable reloadData];
+}
+
+- (IBAction)reSearch:(id)sender {
+    [self search];
 }
 
 - (IBAction)restartSearch:(id)sender {
@@ -108,15 +171,17 @@
 
 -(void)resetVote {
     for(int i = 0; i<4; i++) {
-        SearchResultCell *cell = [_searchResultTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        SearchResultCell *cell = [_searchResultTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i]];
         cell.voteCount = 0;
         cell.voteCountLabel.text = @"0";
     }
+    
     [_searchResultTable reloadData];
 }
 
 - (IBAction)finishVoting:(id)sender {
     SearchResultCell *maxCell;
+    NSString *maxRestaurant;
     int max = 0;
     
     for(int i = 0; i<4; i++) {
@@ -125,6 +190,7 @@
         if (cell.voteCount > max) {
             max = cell.voteCount;
             maxCell = cell;
+            maxRestaurant = [_restaurants objectAtIndex:i];
         }
         [cell.voteButtonOutlet setEnabled:false];
     }
@@ -133,20 +199,9 @@
     
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
     
-    NSManagedObject *newRestaurant = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurants" inManagedObjectContext:context];
+    Restaurants *newRestaurant = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurants" inManagedObjectContext:context];
     
-    [newRestaurant setValue:maxCell.name.text forKey:@"name"];
-    [newRestaurant setValue:maxCell.address.text forKey:@"address"];
-    [newRestaurant setValue:maxCell.phoneNum.text forKey:@"phoneNum"];
-    
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    NSNumber *starNumber = [formatter numberFromString:maxCell.rating.text];
-    NSNumber *priceNumber = [formatter numberFromString:maxCell.pricing.text];
-    
-    [newRestaurant setValue:starNumber forKey:@"starRating"];
-    [newRestaurant setValue:priceNumber forKey:@"pricing"];
-    
-    [context insertObject:newRestaurant];
+    [newRestaurant setValue:maxRestaurant forKey:@"restaurantPlaceID"];
     
     NSError *error = nil;
     if ([context save:&error] == NO) {

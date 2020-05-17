@@ -2,7 +2,7 @@
 //  Restaurants+CoreDataProperties.m
 //  cupOfTea
 //
-//  Created by Wilfredo Cueto on 5/15/20.
+//  Created by Wilfredo Cueto on 5/17/20.
 //  Copyright © 2020 Nivvy Balakumar, Wilfredo Cueto. All rights reserved.
 //
 //
@@ -11,14 +11,10 @@
 
 @implementation Restaurants (CoreDataProperties)
 
-+ (NSFetchRequest<Restaurants *> *)createFetchRequest {
++ (NSFetchRequest<Restaurants *> *)fetchRequest {
 	return [NSFetchRequest fetchRequestWithEntityName:@"Restaurants"];
 }
 
-@dynamic address;
-@dynamic name;
-@dynamic phoneNum;
-@dynamic pricing;
-@dynamic starRating;
+@dynamic restaurantPlaceID;
 
 @end

@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Restaurant.h"
-#import "Restaurants+CoreDataClass.h"
+#import "Restaurants+CoreDataProperties.h"
 #import "VisitedRestaurantCell.h"
 #import "AppDelegate.h"
 

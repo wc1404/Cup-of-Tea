@@ -17,6 +17,7 @@
     _tagCollection.delegate = self;
     
     _tags = [[NSMutableArray alloc] init];
+    [_tags addObject:@"Pizza"];
     
     [_tagCollection reloadData];
 }

@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) NSString *name;
 @property (weak, nonatomic) NSString *address;
 @property (weak, nonatomic) NSString *phoneNum;
-@property (weak, nonatomic) NSString *restImage;
-@property (weak, nonatomic) NSMutableArray *cuisines;
 
 @property float starRating;
 @property int pricing;
@@ -24,10 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype)init;
 
 -(instancetype)initWithName:(NSString*)name andAddress:(NSString*)address andPhoneNum:(NSString*)phoneNum andStarRating:(float)rating andPricing:(int)pricing;
-
--(void)saveToCoreData;
-
-+(NSArray*)fetchPreviousRestaurants;
 
 @end
 

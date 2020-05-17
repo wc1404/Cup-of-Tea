@@ -26,19 +26,19 @@
     
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Configure the request's entity, and optionally its predicate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurants"];
+     
+    NSError *error = nil;
     
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    NSArray *results = [context executeFetchRequest:request error:&error];
+    if (!results) {
+        NSLog(@"Error fetching Restaurant objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
     
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSLog(@"%@",results);
     
-    _fetchController = [[NSFetchedResultsController alloc]
-            initWithFetchRequest:fetchRequest
-            managedObjectContext:context
-            sectionNameKeyPath:nil
-            cacheName:@""];
+    //Load Restaurants from data to _restaurants array
      
 //    NSError *error;
 //    BOOL success = [controller performFetch:&error];
@@ -57,15 +57,10 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[_fetchController sections] count];
+    return _restaurants.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([[_fetchController sections] count] > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[_fetchController sections] objectAtIndex:section];
-        return [sectionInfo numberOfObjects];
-    } else
-        return 0;
     return 1;
 }
 
@@ -75,21 +70,39 @@
     
     VisitedRestaurantCell *cell = [_visitedTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    //Restaurant *currentRestaurant = [_restaurants objectAtIndex:indexPath.section];
-    Restaurants *currentRestaurantData = [_fetchController objectAtIndexPath:indexPath];
+    NSString *currentRestaurant = [_restaurants objectAtIndex:indexPath.section];
     
-    cell.name.text = currentRestaurantData.name;
-    cell.address.text = currentRestaurantData.address;
-    cell.phoneNum.text = currentRestaurantData.phoneNum;
+    NSString *key = @"AIzaSyDrv9DRb5Ocxovw0koOOgrRsBYB_9hnAIc";
+    
+    NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/details/json?place_id=%@&fields=name,formatted_address,formatted_phone_number,rating,price_level&key=%@", currentRestaurant,key];
+
+    NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
+
+    NSError* error;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:restaurantData options:kNilOptions error:&error];
+    
+    NSString *priceLevel = [[json objectForKey:@"result"] objectForKey:@"price_level"];
+    
+    NSString *ratings = [[json objectForKey:@"result"] objectForKey:@"rating"];
+    
+    NSString *name = [[json objectForKey:@"result"] objectForKey:@"name"];
+    NSString *address = [[json objectForKey:@"result"] objectForKey:@"formatted_address"];
+    NSString *phone = [[json objectForKey:@"result"] objectForKey:@"formatted_phone_number"];
+    float rating = [ratings floatValue];
+    int pricing = (int)[priceLevel integerValue];
+    
+    cell.name.text = name;
+    cell.address.text = address;
+    cell.phoneNum.text = phone;
     
     NSMutableString *pricingMoneySigns = [[NSMutableString alloc] init];
     
-    for (int i = 0; i<currentRestaurantData.pricing; i++) {
+    for (int i = 0; i < pricing; i++) {
         [pricingMoneySigns appendString:@"$"];
     }
     
     cell.pricing.text = pricingMoneySigns;
-    cell.rating.text = [[NSString alloc] initWithFormat:@"%.1f", currentRestaurantData.starRating];
+    cell.rating.text = [[NSString alloc] initWithFormat:@"%.1f", rating];
     
     return cell;
 }

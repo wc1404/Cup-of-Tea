@@ -2,15 +2,13 @@
 //  Restaurants+CoreDataClass.h
 //  cupOfTea
 //
-//  Created by Wilfredo Cueto on 5/15/20.
+//  Created by Wilfredo Cueto on 5/17/20.
 //  Copyright © 2020 Nivvy Balakumar, Wilfredo Cueto. All rights reserved.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-@class NSObject;
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3C88C1E12460FEB4008452ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88C1E02460FEB4008452ED /* AppDelegate.m */; };
 		3C88C1E42460FEB4008452ED /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88C1E32460FEB4008452ED /* SceneDelegate.m */; };
-		3C88C1E72460FEB4008452ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C88C1E62460FEB4008452ED /* ViewController.m */; };
 		3C88C1EA2460FEB4008452ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C88C1E82460FEB4008452ED /* Main.storyboard */; };
 		3C88C1EC2460FEB6008452ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C88C1EB2460FEB6008452ED /* Assets.xcassets */; };
 		3C88C1EF2460FEB6008452ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C88C1ED2460FEB6008452ED /* LaunchScreen.storyboard */; };
@@ -44,6 +43,8 @@
 		E9B497C52468F27200BF09CD /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497C42468F27200BF09CD /* Restaurant.m */; };
 		E9B497C8246920C000BF09CD /* PreviouslyVisitedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497C7246920C000BF09CD /* PreviouslyVisitedViewController.m */; };
 		E9B497CB246920E700BF09CD /* VisitedRestaurantCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B497CA246920E700BF09CD /* VisitedRestaurantCell.m */; };
+		E9D7993D2470711A004A4A5E /* cupOfTea_1024.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D7993B24707119004A4A5E /* cupOfTea_1024.png */; };
+		E9D7993E2470711A004A4A5E /* Steaming_Coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D7993C2470711A004A4A5E /* Steaming_Coffee.png */; };
 		E9F97C98246943B300547A3B /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F97C97246943B300547A3B /* SearchResultCell.m */; };
 		EF9959619A9172CF59F1F02C /* Pods_cupOfTea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BACBEF71ADB0133D21A8A73D /* Pods_cupOfTea.framework */; };
 /* End PBXBuildFile section */
@@ -71,8 +72,6 @@
 		3C88C1E02460FEB4008452ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3C88C1E22460FEB4008452ED /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		3C88C1E32460FEB4008452ED /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		3C88C1E52460FEB4008452ED /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3C88C1E62460FEB4008452ED /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3C88C1E92460FEB4008452ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C88C1EB2460FEB6008452ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C88C1EE2460FEB6008452ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,11 +105,10 @@
 		E94D67F62468A9C000B2A211 /* TagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
 		E94D67F72468A9C000B2A211 /* TagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
 		E9540288246F36250082CE2F /* PreviousRestaurants.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreviousRestaurants.xcdatamodel; sourceTree = "<group>"; };
-		E989E5C42462461A00F285D6 /* cup_of_tea.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cup_of_tea.png; path = "/Users/WilfredoCueto/Desktop/2. CSCI-UA 480 014 - iOS Programming/Final Project/Cup-of-Tea/cupOfTea/cupOfTea/cup_of_tea.png"; sourceTree = "<absolute>"; };
-		E99943EF246F74D9000E84CC /* Restaurants+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Restaurants+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
-		E99943F0246F74DA000E84CC /* Restaurants+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Restaurants+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		E99943F1246F74DA000E84CC /* Restaurants+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Restaurants+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		E99943F2246F74DA000E84CC /* Restaurants+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Restaurants+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		E973F87524710411003AF681 /* Restaurants+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Restaurants+CoreDataProperties.h"; sourceTree = "<group>"; };
+		E973F87624710411003AF681 /* Restaurants+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Restaurants+CoreDataClass.h"; sourceTree = "<group>"; };
+		E973F87724710411003AF681 /* Restaurants+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Restaurants+CoreDataClass.m"; sourceTree = "<group>"; };
+		E973F87824710411003AF681 /* Restaurants+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Restaurants+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E99943F5246F95A6000E84CC /* cupOfTea_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_80.png; sourceTree = "<group>"; };
 		E99943F6246F95A6000E84CC /* cupOfTea_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_60.png; sourceTree = "<group>"; };
 		E99943F7246F95A7000E84CC /* cupOfTea_87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_87.png; sourceTree = "<group>"; };
@@ -126,6 +124,8 @@
 		E9B497C7246920C000BF09CD /* PreviouslyVisitedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviouslyVisitedViewController.m; sourceTree = "<group>"; };
 		E9B497C9246920E700BF09CD /* VisitedRestaurantCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisitedRestaurantCell.h; sourceTree = "<group>"; };
 		E9B497CA246920E700BF09CD /* VisitedRestaurantCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisitedRestaurantCell.m; sourceTree = "<group>"; };
+		E9D7993B24707119004A4A5E /* cupOfTea_1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cupOfTea_1024.png; sourceTree = "<group>"; };
+		E9D7993C2470711A004A4A5E /* Steaming_Coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Steaming_Coffee.png; sourceTree = "<group>"; };
 		E9F97C96246943B300547A3B /* SearchResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		E9F97C97246943B300547A3B /* SearchResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,18 +182,15 @@
 		3C88C1DE2460FEB4008452ED /* cupOfTea */ = {
 			isa = PBXGroup;
 			children = (
+				3C88C1F12460FEB6008452ED /* main.m */,
+				E9540287246F36250082CE2F /* PreviousRestaurants.xcdatamodeld */,
+				3C88C1F02460FEB6008452ED /* Info.plist */,
 				3C88C1DF2460FEB4008452ED /* AppDelegate.h */,
 				3C88C1E02460FEB4008452ED /* AppDelegate.m */,
 				3C88C1E22460FEB4008452ED /* SceneDelegate.h */,
 				3C88C1E32460FEB4008452ED /* SceneDelegate.m */,
-				3C88C1E52460FEB4008452ED /* ViewController.h */,
-				3C88C1E62460FEB4008452ED /* ViewController.m */,
 				3C88C1E82460FEB4008452ED /* Main.storyboard */,
-				3C88C1EB2460FEB6008452ED /* Assets.xcassets */,
 				3C88C1ED2460FEB6008452ED /* LaunchScreen.storyboard */,
-				3C88C1F02460FEB6008452ED /* Info.plist */,
-				3C88C1F12460FEB6008452ED /* main.m */,
-				E9540287246F36250082CE2F /* PreviousRestaurants.xcdatamodeld */,
 				E9B497C22468F24A00BF09CD /* Custom Classes */,
 				E94D67EC2468A68200B2A211 /* ViewControllers */,
 				E94D67F52468A8D700B2A211 /* Cells */,
@@ -266,6 +263,7 @@
 		E94D67ED2468A6A600B2A211 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3C88C1EB2460FEB6008452ED /* Assets.xcassets */,
 				E99943F9246F95A7000E84CC /* cupOfTea_40.png */,
 				E99943F8246F95A7000E84CC /* cupOfTea_58.png */,
 				E99943F6246F95A6000E84CC /* cupOfTea_60.png */,
@@ -273,7 +271,8 @@
 				E99943F7246F95A7000E84CC /* cupOfTea_87.png */,
 				E99943FB246F95A8000E84CC /* cupOfTea_120.png */,
 				E99943FA246F95A8000E84CC /* cupOfTea_180.png */,
-				E989E5C42462461A00F285D6 /* cup_of_tea.png */,
+				E9D7993B24707119004A4A5E /* cupOfTea_1024.png */,
+				E9D7993C2470711A004A4A5E /* Steaming_Coffee.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -294,10 +293,10 @@
 		E9B497C22468F24A00BF09CD /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E99943EF246F74D9000E84CC /* Restaurants+CoreDataProperties.h */,
-				E99943F0246F74DA000E84CC /* Restaurants+CoreDataClass.h */,
-				E99943F1246F74DA000E84CC /* Restaurants+CoreDataClass.m */,
-				E99943F2246F74DA000E84CC /* Restaurants+CoreDataProperties.m */,
+				E973F87524710411003AF681 /* Restaurants+CoreDataProperties.h */,
+				E973F87624710411003AF681 /* Restaurants+CoreDataClass.h */,
+				E973F87724710411003AF681 /* Restaurants+CoreDataClass.m */,
+				E973F87824710411003AF681 /* Restaurants+CoreDataProperties.m */,
 				E9B497C32468F27200BF09CD /* Restaurant.h */,
 				E9B497C42468F27200BF09CD /* Restaurant.m */,
 			);
@@ -424,6 +423,7 @@
 				E9994400246F95A8000E84CC /* cupOfTea_40.png in Resources */,
 				3CEF9E34246E383E007A29D4 /* RobotoMono-Bold.ttf in Resources */,
 				3CEF9E35246E383E007A29D4 /* RobotoMono-Regular.ttf in Resources */,
+				E9D7993E2470711A004A4A5E /* Steaming_Coffee.png in Resources */,
 				3CEF9E36246E383E007A29D4 /* RobotoMono-MediumItalic.ttf in Resources */,
 				3CEF9E37246E383E007A29D4 /* RobotoMono-ThinItalic.ttf in Resources */,
 				3CEF9E38246E383E007A29D4 /* RobotoMono-Light.ttf in Resources */,
@@ -437,6 +437,7 @@
 				3CEF9E25246E37F4007A29D4 /* Karla-BoldItalic.ttf in Resources */,
 				3CEF9E26246E37F4007A29D4 /* Karla-Regular.ttf in Resources */,
 				3C88C1EF2460FEB6008452ED /* LaunchScreen.storyboard in Resources */,
+				E9D7993D2470711A004A4A5E /* cupOfTea_1024.png in Resources */,
 				E9994402246F95A9000E84CC /* cupOfTea_120.png in Resources */,
 				3C88C1EC2460FEB6008452ED /* Assets.xcassets in Resources */,
 				3C88C1EA2460FEB4008452ED /* Main.storyboard in Resources */,
@@ -510,7 +511,6 @@
 				E9B497C52468F27200BF09CD /* Restaurant.m in Sources */,
 				E94D67F82468A9C000B2A211 /* TagCell.m in Sources */,
 				E9540289246F36250082CE2F /* PreviousRestaurants.xcdatamodeld in Sources */,
-				3C88C1E72460FEB4008452ED /* ViewController.m in Sources */,
 				E9B497CB246920E700BF09CD /* VisitedRestaurantCell.m in Sources */,
 				3C88C1E12460FEB4008452ED /* AppDelegate.m in Sources */,
 				E94D67EB2468A63B00B2A211 /* SearchViewController.m in Sources */,
