@@ -199,13 +199,14 @@
     
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
     
-    Restaurants *newRestaurant = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurants" inManagedObjectContext:context];
-    
-    [newRestaurant setValue:maxRestaurant forKey:@"restaurantPlaceID"];
-    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurants"];
+     
     NSError *error = nil;
-    if ([context save:&error] == NO) {
-        NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+    
+    NSArray *previousRestaurants = [context executeFetchRequest:request error:&error];
+    if (!previousRestaurants) {
+        NSLog(@"Error fetching Restaurant objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
     }
     
     maxCell.selected = true;

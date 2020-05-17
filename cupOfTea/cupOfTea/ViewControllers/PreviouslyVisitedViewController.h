@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) IBOutlet UITableView *visitedTable;
 
-@property (strong,nonatomic) NSMutableArray *restaurants;
+@property (strong,nonatomic) NSArray *restaurants;
 
 @end
 

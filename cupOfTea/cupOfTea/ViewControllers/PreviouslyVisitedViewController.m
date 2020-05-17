@@ -36,7 +36,7 @@
         abort();
     }
     
-    NSLog(@"%@",results);
+    _restaurants = results;
     
     //Load Restaurants from data to _restaurants array
      
@@ -70,7 +70,9 @@
     
     VisitedRestaurantCell *cell = [_visitedTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    NSString *currentRestaurant = [_restaurants objectAtIndex:indexPath.section];
+    NSString *currentRestaurant = [[_restaurants objectAtIndex:indexPath.section] restaurantPlaceID];
+    
+    NSLog(@"Restaurant: %@",currentRestaurant);
     
     NSString *key = @"AIzaSyDrv9DRb5Ocxovw0koOOgrRsBYB_9hnAIc";
     
