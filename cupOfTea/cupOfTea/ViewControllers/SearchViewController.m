@@ -21,6 +21,10 @@
     _tags = [[NSMutableArray alloc] init];
     
     [_tagCollection reloadData];
+    
+    UITapGestureRecognizer *tapCancelEditing = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+
+    [self.view addGestureRecognizer:tapCancelEditing];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -61,16 +65,35 @@
         
     } else{
         // add input to array and clear text field
-        [_tags addObject:_tagTextField.text];
+        NSString *tagEntered = _tagTextField.text;
         
-        _tagTextField.text = @"";
-        
-        [_tagCollection reloadData];
+        if ([[tagEntered stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] > 0)
+        {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter cuisines with no spaces." preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        } else {
+            
+            [_tags addObject:tagEntered];
+            _tagTextField.text = @"";
+            
+            [self.view endEditing:YES];
+            
+            [_tagCollection reloadData];
+        }
     }
 }
 
 - (IBAction)infoScreen:(id)sender {
     _searchWithTags = false;
+}
+
+- (void)dismissKeyboard {
+       [_tagTextField resignFirstResponder];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender  {
@@ -92,24 +115,24 @@
         _searchWithTags = false;
     }
     
-    if(_searchWithTags && _tags.count <= 0) {
-        NSLog(@"Alert User: Tags Enabled with No tags");
-        return false;
-    }
-    
-    NSLog(@"Passing to Segue Prepare with:");
-    if(_searchEnabled) {
-        NSLog(@"Search Enabled");
-    } else {
-        NSLog(@"Search Disabled");
-    }
-    
-    if(_searchWithTags) {
-        NSLog(@"Tags Enabled with: %lu tags", (unsigned long)_tags.count);
-    } else {
-        NSLog(@"Tags Disabled");
-    }
-    NSLog(@"END");
+//    if(_searchWithTags && _tags.count <= 0) {
+//        NSLog(@"Alert User: Tags Enabled with No tags");
+//        return false;
+//    }
+//
+//    NSLog(@"Passing to Segue Prepare with:");
+//    if(_searchEnabled) {
+//        NSLog(@"Search Enabled");
+//    } else {
+//        NSLog(@"Search Disabled");
+//    }
+//
+//    if(_searchWithTags) {
+//        NSLog(@"Tags Enabled with: %lu tags", (unsigned long)_tags.count);
+//    } else {
+//        NSLog(@"Tags Disabled");
+//    }
+//    NSLog(@"END");
     
     return _searchEnabled;
 }

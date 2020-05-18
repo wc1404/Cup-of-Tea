@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TagCell : UICollectionViewCell
+
 @property (strong, nonatomic) IBOutlet UILabel *tagLabel;
 
 @end

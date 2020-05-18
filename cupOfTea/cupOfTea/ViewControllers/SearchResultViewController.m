@@ -29,19 +29,19 @@
     
     _restaurants = [[NSMutableArray alloc] init];
     
-    NSLog(@"Loading Results View:");
-    if(_searchEnabled) {
-        NSLog(@"Search Enabled");
-    } else {
-        NSLog(@"Search Disabled");
-    }
-
-    if(_searchWithTags) {
-        NSLog(@"Tags Enabled with: %lu tags", (unsigned long)_tags.count);
-    } else {
-        NSLog(@"Tags Disabled");
-    }
-    NSLog(@"END");
+//    NSLog(@"Loading Results View:");
+//    if(_searchEnabled) {
+//        NSLog(@"Search Enabled");
+//    } else {
+//        NSLog(@"Search Disabled");
+//    }
+//
+//    if(_searchWithTags) {
+//        NSLog(@"Tags Enabled with: %lu tags", (unsigned long)_tags.count);
+//    } else {
+//        NSLog(@"Tags Disabled");
+//    }
+//    NSLog(@"END");
     
     if(_searchEnabled) {
         [self search];

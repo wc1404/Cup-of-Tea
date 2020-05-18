@@ -86,10 +86,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath; {
-    
-}
-
 - (IBAction)reloadData:(id)sender {
     [self loadData];
 }
