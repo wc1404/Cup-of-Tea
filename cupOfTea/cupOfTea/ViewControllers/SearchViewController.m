@@ -25,6 +25,7 @@
     UITapGestureRecognizer *tapCancelEditing = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
 
     [self.view addGestureRecognizer:tapCancelEditing];
+    [tapCancelEditing setCancelsTouchesInView:NO];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -67,8 +68,7 @@
         // add input to array and clear text field
         NSString *tagEntered = _tagTextField.text;
         
-        if ([[tagEntered stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] > 0)
-        {
+        if ([tagEntered componentsSeparatedByString:@" "].count > 1) {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter cuisines with no spaces." preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
