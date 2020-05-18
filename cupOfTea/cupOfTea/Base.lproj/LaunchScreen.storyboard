@@ -15,30 +15,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="cupOfTeaLogo" translatesAutoresizingMaskIntoConstraints="NO" id="32R-GG-mS8">
-                                <rect key="frame" x="68" y="299" width="278" height="298"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="cupOfTea_1024.png" translatesAutoresizingMaskIntoConstraints="NO" id="32R-GG-mS8">
+                                <rect key="frame" x="20" y="261" width="374" height="374"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="32R-GG-mS8" secondAttribute="height" multiplier="139:149" id="d95-Pf-0ff"/>
+                                    <constraint firstAttribute="width" secondItem="32R-GG-mS8" secondAttribute="height" multiplier="1:1" id="Mo4-xn-ZKf"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Fup-yl-iaJ"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="32R-GG-mS8" secondAttribute="trailing" constant="68" id="Tdm-BJ-QdA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="32R-GG-mS8" secondAttribute="bottom" constant="265" id="nh8-GO-Hv0"/>
-                            <constraint firstItem="32R-GG-mS8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="68" id="pzv-tQ-nu3"/>
-                            <constraint firstItem="32R-GG-mS8" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sAY-xr-GvC"/>
+                            <constraint firstItem="32R-GG-mS8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aqf-2g-6W4"/>
+                            <constraint firstItem="32R-GG-mS8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cpI-63-mNC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="32R-GG-mS8" secondAttribute="trailing" id="o23-C8-DZg"/>
+                            <constraint firstItem="32R-GG-mS8" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="xLN-GQ-cXF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
-        <image name="cupOfTeaLogo" width="2392" height="2390"/>
+        <image name="cupOfTea_1024.png" width="768" height="768"/>
     </resources>
 </document>

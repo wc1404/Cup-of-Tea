@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SearchViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource>
 
+@property bool searchWithTags;
+@property bool searchEnabled;
+
 @property (strong, nonatomic) IBOutlet UICollectionView *tagCollection;
 
 @property (strong, nonatomic) NSMutableArray *tags;
@@ -22,7 +25,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)addTag:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIButton *randomSearchButton;
+@property (strong, nonatomic) IBOutlet UIButton *searchWithPreferencesButton;
+@property (strong, nonatomic) IBOutlet UIButton *infoScreenButton;
 
+- (IBAction)infoScreen:(id)sender;
 
 @end
 

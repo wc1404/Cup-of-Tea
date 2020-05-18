@@ -13,6 +13,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _searchWithTags = true;
+    _searchEnabled = true;
     
     _tagCollection.delegate = self;
     
@@ -49,7 +51,7 @@
 
 - (IBAction)addTag:(id)sender {
     if ([_tagTextField.text  isEqual: @""]){
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter a valid tag." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter a tag." preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
         
@@ -66,9 +68,50 @@
         [_tagCollection reloadData];
     }
 }
-- (IBAction)randomSearch:(id)sender {
-    [_tags removeAllObjects];
-    [_tagCollection reloadData];
+
+- (IBAction)infoScreen:(id)sender {
+    _searchWithTags = false;
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender  {
+    if([sender isEqual:_searchWithPreferencesButton]) {
+        if(_tags.count > 0) {
+            _searchEnabled = true;
+            _searchWithTags = true;
+        } else {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter tags to search with tags." preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    } else if([sender isEqual:_randomSearchButton]) {
+        _searchEnabled = true;
+        _searchWithTags = false;
+    }
+    
+    if(_searchWithTags && _tags.count <= 0) {
+        NSLog(@"Alert User: Tags Enabled with No tags");
+        return false;
+    }
+    
+    NSLog(@"Passing to Segue Prepare with:");
+    if(_searchEnabled) {
+        NSLog(@"Search Enabled");
+    } else {
+        NSLog(@"Search Disabled");
+    }
+    
+    if(_searchWithTags) {
+        NSLog(@"Tags Enabled with: %lu tags", (unsigned long)_tags.count);
+    } else {
+        NSLog(@"Tags Disabled");
+    }
+    NSLog(@"END");
+    
+    return _searchEnabled;
 }
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -77,7 +120,14 @@
     // Pass the selected object to the new view controller.
     SearchResultViewController *searchResultScreen = segue.destinationViewController; // add view instance for switch and data transfer
     searchResultScreen.tags = _tags; // Send tags to search screen
+    
+    if([sender isEqual:_infoScreenButton]) {
+        _searchEnabled = false;
+        _searchWithTags = false;
+    }
+    
+    searchResultScreen.searchEnabled = _searchEnabled;
+    searchResultScreen.searchWithTags = _searchWithTags;
 }
-
 
 @end

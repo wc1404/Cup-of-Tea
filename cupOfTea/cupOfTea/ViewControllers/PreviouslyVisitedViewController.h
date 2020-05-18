@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Restaurants+CoreDataProperties.h"
 #import "VisitedRestaurantCell.h"
+#import "Restaurants+CoreDataProperties.h"
 #import "AppDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong,nonatomic) NSArray *restaurants;
 
--(void)loadData;
+- (void)loadData;
 
 - (IBAction)reloadData:(id)sender;
 

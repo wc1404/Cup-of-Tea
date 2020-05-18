@@ -25,11 +25,11 @@
     [self loadData];
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
    return 5;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *separationView = [UIView new];
     [separationView setBackgroundColor:[UIColor clearColor]];
     return separationView;
@@ -50,8 +50,6 @@
     VisitedRestaurantCell *cell = [_visitedTable dequeueReusableCellWithIdentifier:cellIdentifier];
     
     NSString *currentRestaurant = [[_restaurants objectAtIndex:indexPath.section] restaurantPlaceID];
-    
-    NSLog(@"Restaurant: %@",currentRestaurant);
     
     NSString *key = @"AIzaSyDrv9DRb5Ocxovw0koOOgrRsBYB_9hnAIc";
     
@@ -96,7 +94,7 @@
     [self loadData];
 }
 
--(void)loadData {
+- (void)loadData {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
     
     NSManagedObjectContext *context = appDelegate.persistentContainer.viewContext;
@@ -112,9 +110,6 @@
     }
     
     _restaurants = results;
-    
-    NSLog(@"Restaurants: %@",_restaurants);
-    NSLog(@"Results: %@",results);
     
     [_visitedTable reloadData];
 }

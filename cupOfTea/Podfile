@@ -3,7 +3,5 @@
 
 target 'cupOfTea' do
   use_frameworks!
-  source 'https://github.com/CocoaPods/Specs.git'
-  pod 'GooglePlaces'
 
 end

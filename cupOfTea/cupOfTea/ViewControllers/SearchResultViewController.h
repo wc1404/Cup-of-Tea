@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "Restaurants+CoreDataProperties.h"
 #import "SearchResultCell.h"
-@import GooglePlaces;
 @import CoreLocation;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,10 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SearchResultViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>
 
 @property CLLocationManager *locationManager;
-@property GMSPlacesClient *placesClient;
+
+@property bool searchWithTags;
+@property bool searchEnabled;
 
 @property (strong, nonatomic) NSMutableArray *tags;
 @property (strong, nonatomic) NSMutableArray *restaurants;
+@property (strong, nonatomic) NSMutableArray *queryResults;
 
 @property (strong, nonatomic) IBOutlet UITableView *searchResultTable;
 
@@ -37,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction)reSearch:(id)sender;
 
--(void)search;
+- (void)search;
 
 @end
 

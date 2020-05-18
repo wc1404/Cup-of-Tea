@@ -20,35 +20,48 @@
     _searchResultTable.delegate = self;
     _searchResultTable.dataSource = self;
     
-    _placesClient = [GMSPlacesClient sharedClient];
-    
     _locationManager = [[CLLocationManager alloc] init];
     [_locationManager setDelegate:self];
     [_locationManager requestWhenInUseAuthorization];
     [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     
+    _queryResults = [[NSMutableArray alloc] init];
+    
     _restaurants = [[NSMutableArray alloc] init];
     
-    [self search];
+    NSLog(@"Loading Results View:");
+    if(_searchEnabled) {
+        NSLog(@"Search Enabled");
+    } else {
+        NSLog(@"Search Disabled");
+    }
+
+    if(_searchWithTags) {
+        NSLog(@"Tags Enabled with: %lu tags", (unsigned long)_tags.count);
+    } else {
+        NSLog(@"Tags Disabled");
+    }
+    NSLog(@"END");
+    
+    if(_searchEnabled) {
+        [self search];
+    }
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-}
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {}
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {}
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-}
-
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if(status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         [_locationManager requestWhenInUseAuthorization];
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
    return 2;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *separationView = [UIView new];
     [separationView setBackgroundColor:[UIColor clearColor]];
     return separationView;
@@ -105,22 +118,33 @@
     return cell;
 }
 
--(void)search {
+- (void)search {
     [self resetVote];
     [_restaurants removeAllObjects];
     
-    [_locationManager requestLocation];
-    
-    NSMutableArray *queryResults = [[NSMutableArray alloc] init];
-    
-    NSString *key = @"AIzaSyDrv9DRb5Ocxovw0koOOgrRsBYB_9hnAIc";
-    NSString *radius = @"1700";// In Meters
-    NSString *latitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.latitude];
-    NSString *longitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.longitude];
-    
-    if(_tags.count > 0) {
-        for(NSString *tag in _tags) {
-            NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&keyword=%@&opennow=true&key=%@", latitude,longitude,radius,tag,key];
+    if (_queryResults.count <= 0) {
+        [_locationManager requestLocation];
+        
+        NSString *key = @"AIzaSyDrv9DRb5Ocxovw0koOOgrRsBYB_9hnAIc";
+        NSString *radius = @"1700";// In Meters
+        NSString *latitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.latitude];
+        NSString *longitude = [[NSString alloc] initWithFormat:@"%.7f", _locationManager.location.coordinate.longitude];
+        
+        if(_searchWithTags) {
+            for(NSString *tag in _tags) {
+                NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&keyword=%@&opennow=true&key=%@", latitude,longitude,radius,tag,key];
+
+                NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
+
+                NSError* error;
+                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:restaurantData options:kNilOptions error:&error];
+                NSArray* places = [json objectForKey:@"results"];
+                for(NSDictionary *restaurant in places) {
+                    [_queryResults addObject:[restaurant objectForKey:@"place_id"]];
+                }
+            }
+        } else {
+            NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&opennow=true&key=%@", latitude,longitude,radius,key];
 
             NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
 
@@ -128,43 +152,31 @@
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:restaurantData options:kNilOptions error:&error];
             NSArray* places = [json objectForKey:@"results"];
             for(NSDictionary *restaurant in places) {
-                [queryResults addObject:[restaurant objectForKey:@"place_id"]];
+                [_queryResults addObject:[restaurant objectForKey:@"place_id"]];
             }
-        }
-    } else {
-        NSString *req = [[NSString alloc] initWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%@,%@&radius=%@&type=restaurant&opennow=true&key=%@", latitude,longitude,radius,key];
-
-        NSData* restaurantData = [NSData dataWithContentsOfURL: [NSURL URLWithString:req]];
-
-        NSError* error;
-        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:restaurantData options:kNilOptions error:&error];
-        NSArray* places = [json objectForKey:@"results"];
-        for(NSDictionary *restaurant in places) {
-            [queryResults addObject:[restaurant objectForKey:@"place_id"]];
         }
     }
     
-    if ([queryResults count] != 0) {
+    if ([_queryResults count] != 0) {
         int rest_count = 0;
         int max_count = 4;
         
-        if(queryResults.count < max_count){
-            max_count = (int)queryResults.count;
+        if(_queryResults.count < max_count){
+            max_count = (int)_queryResults.count;
         }
         
         while (rest_count < max_count) {
-            NSUInteger randomIndex = arc4random() % queryResults.count;
+            NSUInteger randomIndex = arc4random() % _queryResults.count;
             
-            NSString *placeId = [queryResults objectAtIndex:randomIndex];
+            NSString *placeId = [_queryResults objectAtIndex:randomIndex];
             
             if(![_restaurants containsObject:placeId]) {
                 [_restaurants addObject:placeId];
                 rest_count++;
             }
         }
-        
     } else {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"No Restaurants found Please Restart Search" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"No Restaurants found. Please restart search With different criteria." preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
         
@@ -177,7 +189,19 @@
 }
 
 - (IBAction)reSearch:(id)sender {
-    [self search];
+    if(_finishVotingButton.enabled) {
+        if(_queryResults.count > 0) {
+            [self search];
+        }
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Voting has finished, for new suggestions please restart your search" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (IBAction)restartSearch:(id)sender {
@@ -188,14 +212,24 @@
     [self resetVote];
 }
 
--(void)resetVote {
-    for(int i = 0; i<4; i++) {
-        SearchResultCell *cell = [_searchResultTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i]];
-        cell.voteCount = 0;
-        cell.voteCountLabel.text = @"0";
+- (void)resetVote {
+    if(_finishVotingButton.enabled) {
+        for(int i = 0; i<4; i++) {
+            SearchResultCell *cell = [_searchResultTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:i]];
+            cell.voteCount = 0;
+            cell.voteCountLabel.text = @"0";
+        }
+        
+        [_searchResultTable reloadData];
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Voting has finished, for new suggestions please restart your search" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
-    
-    [_searchResultTable reloadData];
 }
 
 - (IBAction)finishVoting:(id)sender {
